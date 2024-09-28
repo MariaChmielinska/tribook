@@ -21,14 +21,84 @@
             <input type="text" name="title" id="title" required maxlength="30" value="<%= apartment.title %>">
             <label for="description">Descripción</label>
             <textarea rows="5" name="description" id="description"><%= apartment.description %> </textarea>
+            <label for="normas">Normas de uso</label>
+            <textarea rows="2" name="normas" id="normas"><%= apartment.normas %> </textarea>
+            <label for="rooms">Número de habitaciones</label>
+            <input type="number" name="rooms" id="rooms" required min="0" value="<%= apartment.rooms %>">
+            <label for="beds">Número de camas en total</label>
+            <input type="number" name="beds" id="beds" required min="0" value="<%= apartment.beds %>">
+            <label for="bathroom">Número baños</label>
+            <input type="number" name="bathroom" id="bathroom" required min="0" value="<%= apartment.bathroom %>">
+            <label for="mainPhoto">Fotografías del apartamento</label>
+            <fieldset class="grid">
+                <input placeholder="Foto 1" type="url" name="photo1" id="photo1" value="<%= apartment.photo1 %>">
+                <input placeholder="Título Foto 1" type="text" name="photo1Title" id="photo1Title" value="<%= apartment.photo1Title %>">
+                <span><input type="radio" id="foto1select" name="mainPhoto" checked value="photo1"> Foto principal</span>
+            </fieldset>
+           
+            <fieldset class="grid">
+                <input placeholder="Foto 2" type="url" name="photo2" id="photo2" value="<%= apartment.photo2 %>">
+                <input placeholder="Título Foto 2" type="text" name="photo2Title" id="photo2Title" value="<%= apartment.photo2Title %>">
+                <span><input type="radio" id="foto2select" name="mainPhoto" value="photo2"> Foto principal</span>
+            </fieldset>
+
+            <fieldset class="grid">
+                <input placeholder="Foto 3" type="url" name="photo3" id="photo3" value="<%= apartment.photo3 %>">
+                <input placeholder="Título Foto 3" type="text" name="photo3Title" id="photo3Title" value="<%= apartment.photo3Title %>">
+                <span><input type="radio" id="foto3select" name="mainPhoto" value="photo3"> Foto principal</span>
+            </fieldset>
+
+            <fieldset class="grid">
+                <input placeholder="Foto 4" type="url" name="photo4" id="photo4" value="<%= apartment.photo4 %>">
+                <input placeholder="Título Foto 4" type="text" name="photo4Title" id="photo4Title" value="<%= apartment.photo4Title %>">
+                <span><input type="radio" id="foto4select" name="mainPhoto" value="photo4"> Foto principal</span>
+            </fieldset>
+           
+            
+            
             <!-- TODO: Precargar todos los campos que nos faltan del formulario: price, size, etc.-->
             <label for="price">Precio por noche</label>
             <input type="number" name="price" id="price" required min="0" value="<%= apartment.price %>">
+            <label for="capacity">Capacidad</label>
+            <input type="number" name="capacity" id="capacity" required min="0" value="<%= apartment.capacity %>">
             <label for="size">M <sup>2</sup></label>
             <input type="number" name="size" id="size" required min="0" value="<%= apartment.size %>">
-            <label for="mainPhoto">Foto principal</label>
-            <input type="url" name="mainPhoto" id="mainPhoto" required value="<%= apartment.mainPhoto  %>">
             <!-- TODO: Añadir nuevo cuando estemos en añadir apartmento. Pero al editar apartamento debería leerse "Guardar cambios"-->
+            Servicios <br>
+            
+                <div>
+                    <input type="checkbox" id="air" name="air" value="<%= apartment.air %>">
+                    <label for="air"> Aire acondicionado</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="heating" name="heating" value="<%= apartment.heating %>">
+                    <label for="heating"> Calefacción</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="accessible" name="accessible" value="<%= apartment.accessible %>">
+                    <label for="accessible">adaptado para personas con movilidad reducida</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="tv" name="tv" value="<%= apartment.tv %>">
+                    <label for="tv">Televisión</label>
+                </div>
+                
+                <div>
+                    <input type="checkbox" id="kitchen" name="kitchen" value="<%= apartment.kitchen %>">
+                    <label for="kitchen">Cocina</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="wifi" name="wifi" value="<%= apartment.wifi %>">
+                    <label for="wifi">WiFi</label>
+                </div>
+            
+            <label for="province">Provincia</label>
+            <input type="text" name="province" id="province" required value="<%= apartment.province %>">
+            <label for="city">Ciudad</label>
+            <input type="text" name="city" id="city" required value="<%= apartment.city %>">
+            <label for="gps">Coordenadas GPS</label>
+            <input type="text" name="gps" id="gps" required value="<%= apartment.gps %>">
+
             <input type="submit" value="<%= apartment._id? 'Guardar Cambios': 'Añadir nuevo' %>">
         </form>
     </main>

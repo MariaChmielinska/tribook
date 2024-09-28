@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
 
-const dotenv = require('dotenv');
+const dotenv = require('dotenv').config();
 
 
 // importar las rutas públicas
@@ -36,6 +36,7 @@ app.use(flash());
 
 
 app.use((req, res, next) => {
+    console.log("MARIA SESSION: ", req.session);
     // La variable req.locals es una variable "global" de tipo objecto a la que todas las vistas pueden acceder
     // Si el usuario esta autentificado entonces es que es de tipo administrador
     res.locals.isAdmin = req.session.isAuthenticated;
