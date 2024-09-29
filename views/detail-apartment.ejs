@@ -24,10 +24,51 @@
             <div>
                 <%= selectedApartment.description %>
             </div>
-            <footer>
+    
+            <article>
+                Espacio
                 <%= selectedApartment.size %> m<sup>2</sup>
+                <div><i class="fa fa-pie-chart" ></i> Habitaciones: <%= selectedApartment.rooms %></div>
+                <div><i class="fa fa-bed" ></i> Camas: <%= selectedApartment.beds %></div>
+                <div><i class="fa fa-bath" ></i> Baños: <%= selectedApartment.bathroom %></div>
+                <div><i class="fa fa-user" ></i> Capacidad: <%= selectedApartment.capacity %></div>
+                <div><i class="fa fa-bath" ></i> Baños: <%= selectedApartment.bathroom %></div>
+            </article>
+            <article>
+                Comodidades
+                <% if (selectedApartment.services.wifi) { %>
+                    <div><i class="fa fa-wifi"></i> WiFi</div>
+                <% } %>
+                <% if (selectedApartment.services.tv) { %>
+                    <div><i class="fa fa-television"></i> TV</div>
+                <% } %>
+                <% if (selectedApartment.services.air) { %>
+                    <div><i class="fa fa-snowflake-o"></i> Aire Condidionado</div>
+                <% } %>
+                <% if (selectedApartment.services.kitchen) { %>
+                    <div><i class="fa fa-cutlery"></i> Cocina</div>
+                <% } %>
+                <% if (selectedApartment.services.heating) { %>
+                    <div><i class="fa fa-thermometer-three-quarters"></i> Calefacción</div>
+                <% } %>
+                <% if (selectedApartment.services.accessible) { %>
+                    <div><i class="fa fa-wheelchair"></i> Adaptado para personas con movilidad reducida</div>
+                <% } %>
+ 
+            </article>
+
+            <article>
+                Normas: <%= selectedApartment.rules %>
+            </article>
+            <article>
+                Ubicación: 
+                <%= selectedApartment.province %>
+                <%= selectedApartment.city %>
+                <%= selectedApartment.gps %>
+            </article>
+            <footer>
             </footer>
-        </article>
+        
         <div class="container">
             <% if (isAdmin) { %>
                 <a href="/admin/apartment/<%= selectedApartment._id %>/edit/">Editar apartamento</a>

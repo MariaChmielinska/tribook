@@ -20,9 +20,9 @@
 
             <input type="text" name="title" id="title" required maxlength="30" value="<%= apartment.title %>">
             <label for="description">Descripción</label>
-            <textarea rows="5" name="description" id="description"><%= apartment.description %> </textarea>
-            <label for="normas">Normas de uso</label>
-            <textarea rows="2" name="normas" id="normas"><%= apartment.normas %> </textarea>
+            <textarea rows="5" name="description" id="description" required><%= apartment.description %> </textarea>
+            <label for="rules">Normas de uso</label>
+            <textarea rows="2" name="rules" id="rules" required><%= apartment.rules %> </textarea>
             <label for="rooms">Número de habitaciones</label>
             <input type="number" name="rooms" id="rooms" required min="0" value="<%= apartment.rooms %>">
             <label for="beds">Número de camas en total</label>
@@ -31,27 +31,23 @@
             <input type="number" name="bathroom" id="bathroom" required min="0" value="<%= apartment.bathroom %>">
             <label for="mainPhoto">Fotografías del apartamento</label>
             <fieldset class="grid">
-                <input placeholder="Foto 1" type="url" name="photo1" id="photo1" value="<%= apartment.photo1 %>">
-                <input placeholder="Título Foto 1" type="text" name="photo1Title" id="photo1Title" value="<%= apartment.photo1Title %>">
-                <span><input type="radio" id="foto1select" name="mainPhoto" checked value="photo1"> Foto principal</span>
+                <input placeholder="Foto principal" type="url" name="mainPhoto" id="mainPhoto" required value="<%= apartment.mainPhoto %>">
+                <input placeholder="Título Foto principal" type="text" name="mainPhotoTitle" id="mainPhotoTitle" required value="<%= apartment.mainPhotoTitle %>">
             </fieldset>
            
             <fieldset class="grid">
                 <input placeholder="Foto 2" type="url" name="photo2" id="photo2" value="<%= apartment.photo2 %>">
                 <input placeholder="Título Foto 2" type="text" name="photo2Title" id="photo2Title" value="<%= apartment.photo2Title %>">
-                <span><input type="radio" id="foto2select" name="mainPhoto" value="photo2"> Foto principal</span>
             </fieldset>
 
             <fieldset class="grid">
                 <input placeholder="Foto 3" type="url" name="photo3" id="photo3" value="<%= apartment.photo3 %>">
                 <input placeholder="Título Foto 3" type="text" name="photo3Title" id="photo3Title" value="<%= apartment.photo3Title %>">
-                <span><input type="radio" id="foto3select" name="mainPhoto" value="photo3"> Foto principal</span>
             </fieldset>
 
             <fieldset class="grid">
                 <input placeholder="Foto 4" type="url" name="photo4" id="photo4" value="<%= apartment.photo4 %>">
                 <input placeholder="Título Foto 4" type="text" name="photo4Title" id="photo4Title" value="<%= apartment.photo4Title %>">
-                <span><input type="radio" id="foto4select" name="mainPhoto" value="photo4"> Foto principal</span>
             </fieldset>
            
             
@@ -61,7 +57,7 @@
             <input type="number" name="price" id="price" required min="0" value="<%= apartment.price %>">
             <label for="capacity">Capacidad</label>
             <input type="number" name="capacity" id="capacity" required min="0" value="<%= apartment.capacity %>">
-            <label for="size">M <sup>2</sup></label>
+            <label for="size">M<sup>2</sup></label>
             <input type="number" name="size" id="size" required min="0" value="<%= apartment.size %>">
             <!-- TODO: Añadir nuevo cuando estemos en añadir apartmento. Pero al editar apartamento debería leerse "Guardar cambios"-->
             Servicios <br>

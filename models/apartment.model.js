@@ -11,6 +11,23 @@ const apartmentSchema = new Schema({
         type: String,
         required: true
     },
+    rules: {
+        type: String,
+        required: true
+    },
+    rooms: {
+        type: Number,
+        required: true
+    },
+    beds: {
+        type: Number,
+        required: true
+    },
+    bathroom: {
+        type: Number,
+        required: true
+    },
+
     price: {
         type: Number,
         required: true
@@ -24,16 +41,53 @@ const apartmentSchema = new Schema({
         type: String,
         required: true,
     },
+    photo2: {
+        type: String,
+    },
+    photo3: {
+        type: String,
+    },
+    photo4: {
+        type: String,
+    },
+    mainPhotoTitle: {
+        type: String,
+        required: true,
+    },
+    photo2Title: {
+        type: String,
+    },
+    photo3Title: {
+        type: String,
+    },
+    photo4Title: {
+        type: String,
+    },
+    city: {
+    type: String,
+    },
+    province: {
+    type: String,
+    },
+    gps: {
+    type: String,
+    }, 
+    capacity: {
+        type: Number
+    },
+
     services: {
         // array de strings 
         // ["wifi", "air aconditionar"]
         // objeto con los servicios { wifi: true, airConditioner: false}
-        wifi: Boolean,
-        airConditioner: Boolean,
-        kitchen: Boolean,
-        disability: Boolean,
-        heater: Boolean,
-        tv: Boolean
+       
+        air: { type: Boolean, default: false },
+        heating: { type: Boolean, default: false },
+        kitchen: { type: Boolean, default: false },
+        accessible: { type: Boolean, default: false },
+        tv: { type: Boolean, default: false },
+        wifi: { type: Boolean, default: false },
+
     },
     // services: {
     //     type: [String], // enum
