@@ -57,17 +57,19 @@ const postNewApartment = async (req, res) => {
         photo4: req.body.photo4 || '',
         photo4Title: req.body.photo4Title || '',
         services: {
-            air: req.body.air === '',
-            heating: req.body.heating === '',
-            kitchen: req.body.kitchen === '',
-            accessible: req.body.accessible === '',
-            tv: req.body.tv === '',
-            wifi: req.body.wifi === ''
+            air: req.body.air === 'selected',
+            heating: req.body.heating === 'selected',
+            kitchen: req.body.kitchen === 'selected',
+            accessible: req.body.accessible === 'selected',
+            tv: req.body.tv === 'selected',
+            wifi: req.body.wifi === 'selected'
         },
         capacity: req.body.capacity,
         province: req.body.province,
         city: req.body.city,
-        gps: req.body.gps,
+        gpsLat: req.body.gpsLat,
+        gpsLng: req.body.gpsLng,
+        isDisabled: req.body.isDisabled === 'true',
     });
     
 

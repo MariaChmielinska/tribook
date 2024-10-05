@@ -6,7 +6,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
-
 }
 
 .apartments article {
@@ -29,6 +28,52 @@ body {
 }
 
 
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel img {
+    width: 100%;
+    display: none;
+}
+
+.carousel img.active {
+    display: block;
+}
+
+.carousel-caption {
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: none;
+}
+
+.carousel-caption.active {
+    display: block;
+}
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.arrow.left {
+    left: 0;
+}
+
+.arrow.right {
+    right: 0;
+}
 
 @media (min-width: 760px) {
     .apartments {
@@ -54,4 +99,8 @@ body {
 
 .container.apartments a {
     text-decoration: none;
+} 
+
+.apartment.disabled{
+    border: 2px solid red;
 } 

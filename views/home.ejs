@@ -54,14 +54,17 @@
             
 
         <div class="container apartments">
-            <% for (const ap of apartments) { %>
+          
+            <% for (const ap of apartments) {
+               if (isAdmin || !ap.isDisabled) {  %>
+            
                 <a href="/apartment/<%= ap._id %>">
-                    <article class="apartment">
+                    <article class="apartment <%= ap.isDisabled ? 'disabled' : '' %>">
                         <header>
                             <%= ap.title %>
                             <div><%= ap.size %> m2</div>
                         </header>
-                        <div><img src="<%= ap.mainPhoto %>" alt=""></div>
+                        <div><img src="<%= ap.mainPhoto %>" alt="mainPhoto"></div>
                         <footer>
                             <%= ap.price %> € por noche
                             <div>
@@ -89,7 +92,8 @@
                         </footer>
                     </article>
                 </a>
-                <% } %>
+                <% }
+            }%>
         </div>
     </main>
 

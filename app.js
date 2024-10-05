@@ -7,7 +7,6 @@ const flash = require('connect-flash');
 
 const dotenv = require('dotenv').config();
 
-
 // importar las rutas públicas
 const indexRoutes = require('./routes/index.js');
 

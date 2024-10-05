@@ -4,6 +4,7 @@
 <head>
     <title>Detalle del apartamento</title>
     <%- include('./partials/head.ejs') %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYwmhbnL_jNaPOh6YEHRPEKfR1yLcVdQw&callback=initMap" async defer></script>
 </head>
 
 <body>
@@ -19,8 +20,27 @@
                     <%= selectedApartment.price %>
                 </del>
                 <%= selectedApartment.price * 0.9 %> € por noche
+                <%= selectedApartment.isDisabled ? ' (Apartamento desactivado)' : '' %>
             </header>
-            <img src="<%= selectedApartment.mainPhoto %>" alt="">
+          
+                <div class="carousel">
+                    <span class="arrow left" onclick="changeSlide(-1)">&#10094;</span>
+    
+                    <img src="<%= selectedApartment.mainPhoto %>" class="active" alt="Main photo">
+                    <div class="carousel-caption active"><%= selectedApartment.mainPhotoTitle %></div>
+    
+                    <img src="<%= selectedApartment.photo2 %>" alt="<%= selectedApartment.photo2Title %>">
+                    <div class="carousel-caption"><%= selectedApartment.photo2Title %></div>
+    
+                    <img src="<%= selectedApartment.photo3 %>" alt="<%= selectedApartment.photo3Title %>">
+                    <div class="carousel-caption"><%= selectedApartment.photo3Title %></div>
+    
+                    <img src="<%= selectedApartment.photo4 %>" alt="<%= selectedApartment.photo4Title %>">
+                    <div class="carousel-caption"><%= selectedApartment.photo4Title %></div>
+    
+                    <span class="arrow right" onclick="changeSlide(1)">&#10095;</span>
+                </div>
+           
             <div>
                 <%= selectedApartment.description %>
             </div>
@@ -60,12 +80,34 @@
             <article>
                 Normas: <%= selectedApartment.rules %>
             </article>
-            <article>
-                Ubicación: 
-                <%= selectedApartment.province %>
-                <%= selectedApartment.city %>
-                <%= selectedApartment.gps %>
-            </article>
+            <% if (selectedApartment.gpsLat && selectedApartment.gpsLng) { %>
+                <div>
+                    <article>
+                        Ubicación: 
+                        <%= selectedApartment.province %>
+                        <%= selectedApartment.city %>
+                        <span id="lat"><%= selectedApartment.gpsLat %></span>, <span id="lng"><%= selectedApartment.gpsLng %></span>
+                        
+                        <div id="map" style="height: 400px; width: 100%;"></div>
+                        <script async defer>
+                            function initMap() {
+                            const latitude = parseFloat(document.querySelector("#lat").innerHTML);
+                            const longitude = parseFloat(document.querySelector("#lng").innerHTML);
+                        
+                            const map = new google.maps.Map(document.getElementById("map"), {
+                                zoom: 15,
+                                center: { lat: latitude, lng: longitude },
+                            });
+                        
+                            const marker = new google.maps.Marker({
+                                position: { lat: latitude, lng: longitude },
+                                map: map,
+                            });
+                            }
+                        </script>
+                    </article>
+                </div>   
+            <% } %>
             <footer>
             </footer>
         
@@ -89,6 +131,24 @@
                     <% } %>
         </div>
     </main>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel img');
+        const captions = document.querySelectorAll('.carousel-caption');
+
+        function changeSlide(direction) {
+            // Hide current image and caption
+            slides[currentSlide].classList.remove('active');
+            captions[currentSlide].classList.remove('active');
+
+            // Update the currentSlide index
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+
+            // Show new image and caption
+            slides[currentSlide].classList.add('active');
+            captions[currentSlide].classList.add('active');
+        }
+    </script>
 </body>
 
 </html>

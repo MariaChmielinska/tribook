@@ -16,8 +16,14 @@
     <main class="container">
         <form action="/admin/apartment/new-apartment" method="POST">
             <input type="hidden" name="id" id="id" value="<%= apartment._id %>">
-            <label for="title">Título</label>
 
+            <label for="isDisabled">State</label>
+            <select name="isDisabled" id="isDisabled">
+                <option value="false" <% if (!apartment.isDisabled) { %>selected<% } %>>Available</option>
+                <option value="true" <% if (apartment.isDisabled) { %>selected<% } %>>Disabled</option>
+            </select>
+
+            <label for="title">Título</label>
             <input type="text" name="title" id="title" required maxlength="30" value="<%= apartment.title %>">
             <label for="description">Descripción</label>
             <textarea rows="5" name="description" id="description" required><%= apartment.description %> </textarea>
@@ -63,28 +69,28 @@
             Servicios <br>
             
                 <div>
-                    <input type="checkbox" id="air" name="air" value="<%= apartment.air %>">
+                    <input type="checkbox" id="air" name="air" value="selected" <% if (apartment.services.air) { %>checked<% } %>>
                     <label for="air"> Aire acondicionado</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="heating" name="heating" value="<%= apartment.heating %>">
+                    <input type="checkbox" id="heating" name="heating" value="selected" <% if (apartment.services.heating) { %>checked<% } %>>
                     <label for="heating"> Calefacción</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="accessible" name="accessible" value="<%= apartment.accessible %>">
+                    <input type="checkbox" id="accessible" name="accessible" value="selected" <% if (apartment.services.accessible) { %>checked<% } %>>
                     <label for="accessible">adaptado para personas con movilidad reducida</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="tv" name="tv" value="<%= apartment.tv %>">
+                    <input type="checkbox" id="tv" name="tv" value="selected"  <% if (apartment.services.tv) { %>checked<% } %>>
                     <label for="tv">Televisión</label>
                 </div>
                 
                 <div>
-                    <input type="checkbox" id="kitchen" name="kitchen" value="<%= apartment.kitchen %>">
+                    <input type="checkbox" id="kitchen" name="kitchen" value="selected" <% if (apartment.services.kitchen) { %>checked<% } %>>
                     <label for="kitchen">Cocina</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="wifi" name="wifi" value="<%= apartment.wifi %>">
+                    <input type="checkbox" id="wifi" name="wifi" value="<%= apartment.services.wifi %>">
                     <label for="wifi">WiFi</label>
                 </div>
             
@@ -93,7 +99,8 @@
             <label for="city">Ciudad</label>
             <input type="text" name="city" id="city" required value="<%= apartment.city %>">
             <label for="gps">Coordenadas GPS</label>
-            <input type="text" name="gps" id="gps" required value="<%= apartment.gps %>">
+            <input type="text" name="gpsLat" id="gpsLat" required value="<%= apartment.gpsLat %>">
+            <input type="text" name="gpsLng" id="gpsLng" required value=" <%= apartment.gpsLng %>">
 
             <input type="submit" value="<%= apartment._id? 'Guardar Cambios': 'Añadir nuevo' %>">
         </form>

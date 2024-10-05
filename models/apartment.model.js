@@ -69,9 +69,14 @@ const apartmentSchema = new Schema({
     province: {
     type: String,
     },
-    gps: {
+    gpsLat: {
     type: String,
     }, 
+
+    gpsLng: {
+        type: String,
+    }, 
+
     capacity: {
         type: Number
     },
@@ -88,6 +93,10 @@ const apartmentSchema = new Schema({
         tv: { type: Boolean, default: false },
         wifi: { type: Boolean, default: false },
 
+    },
+    isDisabled: {
+        type: Boolean,
+        default: false 
     },
     // services: {
     //     type: [String], // enum
